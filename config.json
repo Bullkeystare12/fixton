@@ -1,0 +1,11 @@
+{
+  "prefix": "!",
+  "token": "YOUR_BOT_TOKEN",
+  "clientId": "YOUR_CLIENT_ID",
+  "owners": ["YOUR_USER_ID"],
+  "lavalink": {
+    "host": "127.0.0.1",
+    "port": 2333,
+    "password": "youshallnotpass"
+  }
+}
