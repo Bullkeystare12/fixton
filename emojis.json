@@ -1,0 +1,27 @@
+{
+  "categories": {
+    "automod": "🛡️",
+    "ticket": "🎫",
+    "logger": "📜",
+    "verification": "✅",
+    "voice": "🎙️",
+    "music": "🎶",
+    "premium": "💎",
+    "welcome": "👋",
+    "utility": "⚙️",
+    "moderation": "🔨",
+    "fun": "😂"
+  },
+  "actions": {
+    "ban": "🔒",
+    "kick": "👢",
+    "mute": "🔇",
+    "warn": "⚠️",
+    "play": "▶️",
+    "pause": "⏸️",
+    "skip": "⏭️"
+  },
+  "custom": {
+    "nitroExample": "<:mycustom:123456789012345678>"
+  }
+}
