@@ -1,0 +1,16 @@
+{
+  "name": "my-discord-bot",
+  "version": "1.0.0",
+  "description": "Advanced Discord bot with panels, premium no-prefix, emojis and Lavalink",
+  "main": "node.js",
+  "scripts": {
+    "start": "node node.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.0",
+    "erela.js": "^2.4.2",
+    "node-fetch": "^2.6.7",
+    "glob": "^8.1.0",
+    "dotenv": "^16.4.0"
+  }
+}
