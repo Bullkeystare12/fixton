@@ -1,11 +1,20 @@
 const { spawn } = require("child_process");
 const path = require("path");
 
-// Start Python script to prepare lavalink nodes (writes lavalink/nodes.json)
-const py = spawn("python3", [path.join(__dirname, "lavalink_config.py")]);
-py.stdout.on("data", d => console.log(`[lavalink-config.py] ${d}`));
-py.stderr.on("data", d => console.error(`[lavalink-config.py ERROR] ${d}`));
-py.on("close", code => console.log(`lavalink_config.py exited with ${code}`));
+// Start Lavalink Python config
+const pyProcess = spawn("python", [path.join(__dirname, "lavalink_config.py")]);
 
-// Then start the bot
+pyProcess.stdout.on("data", data => {
+  console.log(`[Python] ${data}`);
+});
+
+pyProcess.stderr.on("data", data => {
+  console.error(`[Python Error] ${data}`);
+});
+
+pyProcess.on("close", code => {
+  console.log(`[Python exited with code ${code}]`);
+});
+
+// Start Discord Bot
 require("./index.js");
