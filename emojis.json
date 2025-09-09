@@ -1,27 +1,56 @@
 {
-  "categories": {
-    "automod": "🛡️",
-    "ticket": "🎫",
-    "logger": "📜",
-    "verification": "✅",
-    "voice": "🎙️",
-    "music": "🎶",
-    "premium": "💎",
-    "welcome": "👋",
-    "utility": "⚙️",
-    "moderation": "🔨",
-    "fun": "😂"
+  "ticket": {
+    "open": "🎫",
+    "info": "ℹ️",
+    "close": "🔒",
+    "delete": "🗑️"
   },
-  "actions": {
-    "ban": "🔒",
+
+  "antinuke": {
+    "ban": "🚫",
     "kick": "👢",
-    "mute": "🔇",
-    "warn": "⚠️",
-    "play": "▶️",
-    "pause": "⏸️",
-    "skip": "⏭️"
+    "bot": "🤖",
+    "role": "🎭",
+    "channel": "📺",
+    "webhook": "🪝"
   },
-  "custom": {
-    "nitroExample": "<:mycustom:123456789012345678>"
+
+  "automode": {
+    "default": "⚡"
+  },
+
+  "verification": {
+    "verify": "✅"
+  },
+
+  "voice": {
+    "jtc": "🔊"
+  },
+
+  "welcome": {
+    "wave": "👋"
+  },
+
+  "utility": {
+    "tool": "🛠"
+  },
+
+  "moderation": {
+    "shield": "🛡"
+  },
+
+  "logger": {
+    "log": "📝",
+    "success": "✅",
+    "error": "❌",
+    "warn": "⚠️",
+    "info": "ℹ️"
+  },
+
+  "giveaway": {
+    "gift": "🎉",
+    "participants": "👥",
+    "end": "⏹",
+    "reroll": "🔄"
   }
 }
