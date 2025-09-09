@@ -1,40 +1,43 @@
 const { Client, GatewayIntentBits, Collection } = require("discord.js");
 const fs = require("fs");
 const path = require("path");
-const config = require("./config.json");
+const logger = require("./utils/logger");
 
+// Load emojis
+const emojis = JSON.parse(fs.readFileSync("./emojis.json", "utf8"));
+
+// Bot client
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildVoiceStates,
-    GatewayIntentBits.GuildMembers
+    GatewayIntentBits.GuildVoiceStates
   ]
 });
 
-client.config = config;
 client.commands = new Collection();
-client.commandList = []; // optional list for help
+client.prefix = "$";
 
-// Utilities
-client.utils = {};
-client.utils.emoji = require("./utils/emojiUtil");
-client.utils.button = require("./utils/buttonFactory");
+// Load commands
+const commandFiles = fs.readdirSync(path.join(__dirname, "commands"))
+  .filter(file => file.endsWith(".js"));
+for (const file of commandFiles) {
+  const command = require(`./commands/${file}`);
+  client.commands.set(command.name, command);
+}
 
-// Handlers
-require("./handlers/commandHandler")(client);
-require("./handlers/lavalinkHandler")(client);
-
-// Events loader
-const eventsPath = path.join(__dirname, "events");
-fs.readdirSync(eventsPath).forEach(file => {
-  if (!file.endsWith('.js')) return;
+// Load events
+const eventFiles = fs.readdirSync(path.join(__dirname, "events"))
+  .filter(file => file.endsWith(".js"));
+for (const file of eventFiles) {
   const event = require(`./events/${file}`);
-  if (event.once) client.once(event.name, (...args) => event.execute(client, ...args));
-  else client.on(event.name, (...args) => event.execute(client, ...args));
-});
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args, client, emojis));
+  } else {
+    client.on(event.name, (...args) => event.execute(...args, client, emojis));
+  }
+}
 
-client.login(config.token).catch(err => {
-  console.error("Failed to login. Check token in config.json:", err);
-});
+client.login("YOUR_BOT_TOKEN");
